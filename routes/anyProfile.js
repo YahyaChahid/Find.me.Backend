@@ -8,7 +8,7 @@ router.get('/:_id',async (req,res)=>{
         const profile = await User.findOne({_id: req.params._id});
         res.send(profile);
     }catch(err){
-        res.status(400).send('this profile doesnt exist');
+        res.status(400).send('profile doesnt exist');
     }
 
 })
