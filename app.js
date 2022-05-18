@@ -10,6 +10,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const upload = require('./controllers/s3Upload');
 
 const app = express();
 
@@ -23,6 +24,7 @@ const HOST = process.env.HOST;
 
 // Middleware
 app.use(bodyParser.json({ extended : true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(morgan('dev'));
 
@@ -39,6 +41,7 @@ app.use('/login',login);
 app.use('/myprofile',myProfile);
 app.use('/profile',anyProfile);
 app.use('/qrcode',qrcode);
+
 
 // Starting the server
 app.listen(PORT, () => {
